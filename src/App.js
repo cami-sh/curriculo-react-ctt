@@ -1,145 +1,75 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css"
+import Header from "./components/Header"
+import SideBar from "./components/Sidebar"
+import Experience from "./components/Experience"
 
 
 function App() {
 
-  const fakeAPI =  
-    {
-      nome: 'Lisa Simpson',
-      ocupacao: 'Developer',
-      resumo: '8 anos e já sei React',
-      perfilProfissional: 'Faço miojo bom',
+  const fakeAPI =  {
+      nome: 'Camila Sayuri',
+      ocupacao: 'Estudante de React',
+      resumo: '"Apaixonada por dogs e livros! Me chama para aprender novas coreografias ;)"',
+      perfilProfissional: 'Conheci o Marketing através da Empresa Júnior e atualmente trabalho na área. Depois de participar de Hackathons e outros eventos, me interessei por Front e UX Design, por isso estou me aventurando e estudando mais.',
+      foto: 'https://media-exp1.licdn.com/dms/image/C4D03AQHHnPT1G8b8AQ/profile-displayphoto-shrink_800_800/0/1585242586238?e=1616630400&v=beta&t=LPtDSaW6F58C_pccsEELPJV64vIuhvbJU2amtiAw_n8',
       contatos: [
         {
           id: 1,
           tipo: 'telefone',
-          contato: '19 0000-0000'
+          contato: '11 95556-0620'
         },
         {
           id: 2,
           tipo: 'email',
-          contato: 'nome@dev.com'
+          contato: 'camilahanazono@gmail.com'
         }
       ],
       educacao: [
         {
           id: 1,
-          instituicao: 'EMEF',
-          curso: 'Ensino basico'
+          instituicao: 'Unicamp (Universidade Estadual de Campinas)',
+          curso: 'Matemática Aplicada e Computacional',
+          periodo: '2016-2020'
         },
         {
           id: 2,
-          instituicao: 'ETEC',
-          curso: 'Como ser dev'
+          instituicao: 'Colégio Interviva',
+          curso: 'Ensino Médio',
+          periodo: '2013-2015'
         }
       ],
       experiencia: [
         {
           id: 1,
-          cargo: 'Front',
-          periodo: 'Agosto 2019 - Atualmente',
-          empresa: 'NASA',
-          local: 'Nova York',
-          conteudo: 'Fazia nada e ganhava bem'
+          cargo: 'Front - React',
+          periodo: 'Janeiro/2020 - Março/2020',
+          empresa: 'Campinas Tech Talents',
+          local: 'Online',
+          conteudo: 'Programa de formação e qualificação profissional de novos desenvolvedores. Na trilha apoiada pela empresa AB InBev, o aprendizado é aplicado em projetos toda semana.'
         },
         {
           id: 2,
-          cargo: 'Back',
-          periodo: 'Agosto 2018 - Agosto 2019',
-          empresa: 'CIA',
-          local: 'Boston',
-          conteudo: 'Fazia nada e ganhava mal'
+          cargo: 'Assistente de Growth Hacker',
+          periodo: 'Julho/2020 - o momento',
+          empresa: 'Escola EDTI',
+          local: 'Campinas-SP',
+          conteudo: 'Sou responsável pelas estratégias de conteúdo e redes sociais para captação de novos leads. Acompanho alguns indicadores da área e trabalho com e-mail marketing para aumento da conversão.'
         }
       ]
   }
+
+  const [resposta] = useState (fakeAPI)
+
   return (
     <main>
-      <div className="perfil">
-        <img src="https://i.pravatar.cc/400" alt="Perfil" />
-      </div>
-      <div className="biografia">
-        <h1>
-          Nome Sobrenome
-        </h1>
-        <div className="ocupacao">Developer</div>
-        <p>109 anos e pronta pra ser dev</p>
-      </div>
 
-      <div className="titulo">
-        Perfil <br /> Profissional
-      </div>
+      <Header dados={resposta}/>
 
-      <div className="perfil-profissional">
-        <p>
-          Faço nada da vida
-        </p>
-      </div>
-      <aside>
-        <div className="sidebar">
-          <h3>Contatos</h3>
+      <SideBar dados={resposta}/>
 
-          <button>Mostrar Contatos</button>
+      <Experience dados={resposta}/>
 
-          <div className="lista-de-contatos">
-            <li>
-              <div className="item-contato">
-                <h4>TELEFONE</h4>
-                <p>(19) 0000-0000</p>
-              </div>
-            </li>
-            <li>
-              <div className="item-contato">
-                <h4>TELEFONE</h4>
-                <p>(19) 0000-0000</p>
-              </div>
-            </li>
-          </div>
-        </div>
-
-        <div className="sidebar">
-          <h3>Educação</h3>
-          <div className="lista-de-formacao">
-            <li>
-              <h4>Faculdade da vida</h4>
-              <p>Uniesquina 2019 - 2022</p>
-            </li>
-            <li>
-              <h4>EMEF</h4>
-              <p>Qualquer lugar 2010 - 2013</p>
-            </li>
-          </div>
-        </div>
-      </aside>
-      <div className="experience">
-        <h2>Experiência Profissional</h2>
-
-        <div className="experience-item">
-          <div>
-            <h4>Developer</h4>
-            <span>Novembro 2019 - Atualmente</span>
-
-            <strong>Empresa da hora</strong>
-            <span>Campinas - São Paulo</span>
-          </div>
-          <p>
-            Fazia nada
-        </p>
-        </div>
-        <div className="experience-item">
-
-          <div>
-            <h4>Developer</h4>
-            <span>Agosto 2019 - Novembro 2019</span>
-
-            <strong>Empresa estranha</strong>
-            <span>Sumaré - São Paulo</span>
-          </div>
-          <p>
-            Fazia menos
-        </p>
-        </div>
-      </div>
     </main>
   );
 }
